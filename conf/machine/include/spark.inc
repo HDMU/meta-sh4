@@ -24,6 +24,6 @@ EXTRA_IMAGEDEPENDS += "\
     libstgles \
     "
 
-MACHINE_FEATURES += "hdmicec ci directfb sh4booster modutils-spark"
+MACHINE_FEATURES += "hdmicec ci directfb sh4booster modutils-spark textlcd 7segment"
 
 DISTRO_FEATURES_append += "gtk-directfb"
