@@ -1,6 +1,8 @@
-SUMMARY = "Driver for Ralink rt2870sta"
+SUMMARY = "Driver for Realtek USB wireless devices"
 HOMEPAGE = "http://www.realtek.com/"
-SECTION = "kernel = /modules"
+SECTION = "base"
+PRIORITY = "required"
+PACKAGE_ARCH = "${MACHINE_ARCH}"
 LICENSE = "GPLv2"
 require conf/license/license-gplv2.inc
 
@@ -10,14 +12,9 @@ inherit module
 
 SRCREV = "${AUTOREV}"
 
-SRC_URI = " \
-	git://github.com/OpenVisionE2/sh4-driver.git;protocol=git \
-	file://RT2870STA.dat"
+SRC_URI = "git://github.com/OpenVisionE2/sh4-driver.git;protocol=git "
 
-SRC_URI[md5sum] = "0aabffc9071a5ac742bb1e8256110132"
-SRC_URI[sha256sum] = "282ad85766ec967596ebf5e84d15ae83cfcda210eeec0c22fb59a983020f6258"
-
-S = "${WORKDIR}/git/wireless/rt2870sta"
+S = "${WORKDIR}/git/wireless/rtl8192cu"
 
 EXTRA_OEMAKE = "-e MAKEFLAGS="
 
@@ -32,13 +29,12 @@ do_compile() {
 		O=${STAGING_KERNEL_BUILDDIR} \
 		${@d.getVar('MACHINE',1).upper()}=1 \
 		M=${S} V=1
+		ARCH=sh
 }
 
 do_install() {
-	install -d ${D}${base_libdir}/modules/${KERNEL_VERSION}/kernel/drivers/net/wireless
-	install -m 0644 ${S}/*sta${KERNEL_OBJECT_SUFFIX} ${D}${base_libdir}/modules/${KERNEL_VERSION}/kernel/drivers/net/wireless
-	install -d ${D}${sysconfdir}/Wireless/RT2870STA
-	install -m 644 ${WORKDIR}/RT2870STA.dat ${D}${sysconfdir}/Wireless/RT2870STA
+	install -d ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra/wireless
+	install -m 0644 ${S}/8192cu.ko ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra/wireless
 }
 
 FILES_${PN}_append = "${sysconfdir}/Wireless"
