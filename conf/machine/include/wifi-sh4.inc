@@ -6,12 +6,11 @@ MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS += "\
 	firmware-rt2870 \
 	firmware-rt73 \
 	firmware-rt3070 \
-	firmware-mt7601u \
 	firmware-rtl8188eu \
 	firmware-rtl8192cu \
 	firmware-rtl8712u \
 	firmware-rtl8xxxu \
-    firmware-zd1211 \
+	firmware-zd1211 \
 	\
 	kernel-module-ath \
 	kernel-module-ar9170usb \
@@ -34,7 +33,7 @@ MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS += "\
 	kernel-module-rtl871x \
 	\
 	rt7777-legacy \
-    rt8812au \
+	rt8812au \
 	rtl8723a \
 	rtl8723bs \
 "
