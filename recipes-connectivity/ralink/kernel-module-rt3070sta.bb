@@ -1,7 +1,6 @@
-SUMMARY = "Driver for Ralink rt5370sta"
+SUMMARY = "Driver for Ralink rt3070sta"
 HOMEPAGE = "http://www.realtek.com/"
-SECTION = "base"
-PRIORITY = "required"
+SECTION = "kernel/modules"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 LICENSE = "GPLv2"
 require conf/license/license-gplv2.inc
@@ -12,9 +11,16 @@ inherit module
 
 SRCREV = "${AUTOREV}"
 
-SRC_URI = "git://github.com/OpenVisionE2/sh4-driver.git;protocol=git"
+FILESEXTRAPATHS_prepend := "${THISDIR}/rt3070sta:"
 
-S = "${WORKDIR}/git/wireless/rt5370sta"
+SRC_URI = " \
+	git://github.com/OpenVisionE2/sh4-driver.git;protocol=git \
+	file://RT3070STA.dat"
+
+SRC_URI[md5sum] = "e8d428a67a16bef5fbd57f463433293a"
+SRC_URI[sha256sum] = "d0058738f0f28860a3c9a260460f486a85843ed6c49e20e755bbe78eb3875f37"
+
+S = "${WORKDIR}/git/wireless/rt3070sta"
 
 EXTRA_OEMAKE = "-e MAKEFLAGS="
 
@@ -33,8 +39,10 @@ do_compile() {
 }
 
 do_install() {
-	install -d ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra/wireless
-	install -m 0644 ${S}/rt5370sta.ko ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra/wireless
+	install -d ${D}${base_libdir}/modules/${KERNEL_VERSION}/kernel/drivers/net/wireless/ralink
+	install -m 0644 ${S}/rt3070sta.ko ${D}${base_libdir}/modules/${KERNEL_VERSION}/kernel/drivers/net/wireless/ralink
+	install -d ${D}${sysconfdir}/Wireless/RT3070STA
+	install -m 644 ${WORKDIR}/RT3070STA.dat ${D}${sysconfdir}/Wireless/RT3070STA
 }
 
 FILES_${PN}_append = "${sysconfdir}/Wireless"

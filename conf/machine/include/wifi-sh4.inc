@@ -14,11 +14,6 @@ MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS += "\
 	\
 	kernel-module-ath \
 	kernel-module-ar9170usb \
-	kernel-module-rt2500usb \
-	kernel-module-rt2800usb \
-	kernel-module-rt2x00usb \
-	kernel-module-rt2x00lib \
-	kernel-module-rt73usb \
 	kernel-module-rtl8187 \
 	kernel-module-zd1211rw \
 	\

@@ -1,7 +1,6 @@
 SUMMARY = "Driver for Realtek USB wireless devices"
 HOMEPAGE = "http://www.realtek.com/"
-SECTION = "base"
-PRIORITY = "required"
+SECTION = "kernel/modules"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 LICENSE = "GPLv2"
 require conf/license/license-gplv2.inc
@@ -33,8 +32,8 @@ do_compile() {
 }
 
 do_install() {
-	install -d ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra/wireless
-	install -m 0644 ${S}/8192cu.ko ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra/wireless
+	install -d ${D}${base_libdir}/modules/${KERNEL_VERSION}/kernel/drivers/net/wireless/realtek
+	install -m 0644 ${S}/8192cu.ko ${D}${base_libdir}/modules/${KERNEL_VERSION}/kernel/drivers/net/wireless/realtek
 }
 
 FILES_${PN}_append = "${sysconfdir}/Wireless"

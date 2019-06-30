@@ -1,7 +1,6 @@
 SUMMARY = "mediatek 7601 v3.0.0.4"
 HOMEPAGE = "www.mediatek.com"
-SECTION = "base"
-PRIORITY = "required"
+SECTION = "kernel/modules"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 LICENSE = "GPLv2"
 require conf/license/license-gplv2.inc
@@ -40,8 +39,8 @@ do_compile() {
 }
 
 do_install() {
-	install -d ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra/wireless
-	install -m 0644 ${S}/mt7601Usta.ko ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra/wireless
+	install -d ${D}${base_libdir}/modules/${KERNEL_VERSION}/kernel/drivers/net/wireless/mediatek
+	install -m 0644 ${S}/mt7601Usta.ko ${D}${base_libdir}/modules/${KERNEL_VERSION}/kernel/drivers/net/wireless/mediatek
 	install -d ${D}${sysconfdir}/Wireless/MT7601U
 	install -m 0644 ${WORKDIR}/RT2870STA.dat ${D}/etc/Wireless/MT7601U/RT2870STA.dat
 }
