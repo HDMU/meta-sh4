@@ -26,6 +26,10 @@ PREFERRED_PROVIDER_virtual/egl = "libstgles"
 PREFERRED_PROVIDER_virtual/libgles1 = "libstgles"
 PREFERRED_PROVIDER_virtual/enigma2-mediaservice ?= "enigma2-plugin-systemplugins-servicemp3epl"
 
+# If desired without gst, then enable here and disable servicemp3epl
+# build without gst (servicesh4) please disable Serviceapp for build 
+# PREFERRED_PROVIDER_virtual/enigma2-mediaservice ?= "enigma2-plugin-systemplugins-servicesh4"
+
 SERIAL_CONSOLE = "115200 ttyAS0"
 
 DVBPROVIDER = "kernel"
